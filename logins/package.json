@@ -1,7 +1,7 @@
 {
   "name": "login",
   "version": "1.0.0",
-  "description": "Muchas cosas",
+  "description": "Cambios en los hbs",
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
