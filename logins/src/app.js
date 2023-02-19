@@ -11,9 +11,9 @@ const { Session } = require('express-session');
 
 // creacion de la aplicación y asignación del puerto 
 const app = express();
-app.set('port',4000);
+app.set('port', 4000);
 
-app.set('views', __dirname+'/views')
+app.set('views', __dirname + '/views')
 app.engine('hbs', engine({
     extname: '.hbs',
 }));
@@ -37,12 +37,12 @@ app.use(bodyParser.json());
 //el segundo parámetro es una función de devolución de llamada 
 //que s
 //que se ejecuta cuando se realiza una solicitud a esa ruta.
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.render('home');
 })
 
 
-app.listen (app.get('port'), () =>{
+app.listen(app.get('port'), () => {
     console.log('listening on port ', app.get('port'));
 });
 
