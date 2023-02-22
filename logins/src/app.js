@@ -12,13 +12,13 @@ const loginRoutes = require('./routes/login');
 
 // creacion de la aplicación y asignación del puerto 
 const app = express();
-app.set('port',5000);
+app.set('port', 5000);
 
 app.use(express.static('public'))
 //definicion de la carpeta de plantillas (templates, views)
-app.set('views', __dirname+'/views');
+app.set('views', __dirname + '/views');
 
-app.use(express.static(__dirname +'/public'));
+app.use(express.static(__dirname + '/public'));
 //Define al motor de vistas de Node.js para usar el "hbs" 
 //este usa templetes para renderizar HTML.
 app.engine('hbs', engine({
@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({
 //configura el middleware para analizar las solicitudes entrantes con cargas JSON.
 app.use(bodyParser.json());
 //define las credenciales de conección a la Base de datos 
-app.use(myconnection(mysql,{
+app.use(myconnection(mysql, {
     host: 'localhost',
     user: 'root',
     password: '',
@@ -48,7 +48,7 @@ app.use(myconnection(mysql,{
 app.use(session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true 
+    saveUninitialized: true
 }));
 
 
@@ -57,19 +57,23 @@ app.use(session({
 //y se monta en la ruta raíz ('/'). 
 //Esto significa que cualquier solicitud a la aplicación pasará primero por el 
 //middleware loginRoutes antes de pasar a cualquier middleware posterior.
-app.use('/',loginRoutes);
+app.use('/', loginRoutes);
 
 
 //este es método Express.js configura una ruta para la aplicación. 
 //Toma dos parámetros: el primer parámetro es la ruta de la ruta y 
 //el segundo parámetro es una función de devolución de llamada 
 //que se ejecuta cuando se realiza una solicitud a esa ruta.
-app.get('/', (req,res) => {
-    res.render('home');
+app.get('/', (req, res) => {
+    if (req.session.loggedin == true) {
+        res.render('home', {name: req.session.name});
+    } else {
+        res.redirect('/login')
+    }
 })
 
 //inicia la ejecución de la aplicación en el puert 4000
-app.listen (app.get('port'), () =>{
+app.listen(app.get('port'), () => {
     console.log('listening on port ', app.get('port'));
 })
 

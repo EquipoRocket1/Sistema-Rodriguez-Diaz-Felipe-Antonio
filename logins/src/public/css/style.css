@@ -25,10 +25,24 @@ li {
 
 .sesion{
     float: right;
+    margin-right: 10px;
+}
+
+.sesionl{
+    float: right;
+    background: #ca2929;
+}
+
+.sesionl a:hover{
+    background: #a10606;
 }
 
 .acerca{
     float: right;
+}
+
+.nombre{
+    float: left;
 }
 
 .nombre a{
@@ -39,6 +53,10 @@ li {
     text-decoration: none;
 }
 
+.nombre a:hover{
+    background-color: #000066;
+}
+
 li a {
     display: block;
     color: white;
@@ -47,7 +65,7 @@ li a {
 }
 
 li:hover {
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .active {
