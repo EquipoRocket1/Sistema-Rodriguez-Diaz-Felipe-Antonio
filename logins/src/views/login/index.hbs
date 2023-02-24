@@ -1,51 +1,174 @@
-<main>
+<style>body{ background-color: #000; } .card{ width: 400px; border:none; } .btr{
+  border-top-right-radius: 5px !important; } .btl{ border-top-left-radius: 5px
+  !important; } .btn-dark { color: #fff; background-color: #0d6efd;
+  border-color: #0d6efd; } .btn-dark:hover { color: #fff; background-color:
+  #0d6efd; border-color: #0d6efd; } .nav-pills{ display:table !important;
+  width:100%; } .nav-pills .nav-link { border-radius: 0px; border-bottom: 1px
+  solid #0d6efd40; } .nav-item{ display: table-cell; background: #0d6efd2e; }
+  .form{ padding: 10px; height: 300px; } .form input{ margin-bottom: 12px;
+  border-radius: 3px; } .form input:focus{ box-shadow: none; } .form button{
+  margin-top: 20px; } .tab-content{ padding-bottom: 150px; }
+</style>
 
-    <div class="contenedor__todo">
-        <div class="caja__trasera">
-            <div class="caja__trasera-login">
-                <h3>¿Ya tienes una cuenta?</h3>
-                <p>Inicia sesión para entrar en la página</p>
-                <button id="btn__iniciar-sesion">Iniciar Sesión</button>
-            </div>
-            <div class="caja__trasera-register">
-                <h3>¿Aún no tienes una cuenta?</h3>
-                <p>Regístrate para que puedas iniciar sesión</p>
-                <button id="btn__registrarse">Regístrarse</button>
-            </div>
-        </div>
+<div class="d-flex justify-content-center align-items-center mt-5">
 
-        <!--Formulario de Login y registro-->
-        <div class="contenedor__login-register">
-            <!--Login-->
-            <form action="/entrar" method="post" class="formulario__login">
-                <h2>Iniciar Sesión</h2>
-                <input type="email" name="email" placeholder="Correo Electronico"required>
-                <input type="password" name="password" placeholder="Contraseña"required>
-                <button>Entrar</button>
-                {{#if errors}}
-                <p style="color: red;">{{errors}}</p>
-                 {{/if}}
-            </form>
+  <div class="card">
 
-            <!--Register-->
-            <form action="/registra" method="post" class="formulario__register">
-                <h2>Regístrarse</h2>
-                <input type="text" name="apellido-paterno" placeholder="Apellido paterno"required>
-                <input type="text" name="apellido-materno" placeholder="Apellido materno"required />
-                <input type="text" name="nombres" placeholder="Nombres"required />
-                <fieldset>
-                    <label for="fecha">Fecha de nacimiento</label>
-                    <input id="fecha" name="fecha-nacimiento" type="date" required>
-                </fieldset>
-                <input type="text" name="numero" placeholder="Numero" required>
-                <input type="email" name="email" placeholder="Correo elctronico" required>
-                <input type="password" name="password" placeholder="Contraseña" required />
-                <button>Regístrarse</button>
-                {{#if error}}
-                <p style="color: red;">{{error}}</p>
-                 {{/if}}
-            </form>
-        </div>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item text-center">
+        <a
+          class="nav-link active btl"
+          id="pills-home-tab"
+          data-toggle="pill"
+          href="#pills-home"
+          role="tab"
+          aria-controls="pills-home"
+          aria-selected="true"
+        >Login</a>
+      </li>
+      <li class="nav-item text-center">
+        <a
+          class="nav-link btr"
+          id="pills-profile-tab"
+          data-toggle="pill"
+          href="#pills-profile"
+          role="tab"
+          aria-controls="pills-profile"
+          aria-selected="false"
+        >Signup</a>
+      </li>
+
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="pills-home"
+        role="tabpanel"
+        aria-labelledby="pills-home-tab"
+      >
+
+        <form class="form px-4 pt-5" action="/entrar" method="post">
+
+          <input
+            style="margin-top: 70px;"
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+            required
+            maxlength="50"
+          />
+
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+            minlength="8"
+            maxlength="16"
+            required
+          />
+
+          {{#if errors}}
+
+            <p>{{errors}}</p>
+
+          {{/if}}
+
+          <button class="btn btn-dark btn-block">Login</button>
+
+        </form>
+
+      </div>
+      <div
+        class="tab-pane fade"
+        id="pills-profile"
+        role="tabpanel"
+        aria-labelledby="pills-profile-tab"
+      >
+
+        <form class="form px-4" action="/registra" method="post">
+
+          <input
+            type="text"
+            name="apellido-paterno"
+            class="form-control"
+            placeholder="Apellido paterno"
+            maxlength="25"
+            required
+          />
+
+          <input
+            type="text"
+            name="apellido-materno"
+            class="form-control"
+            placeholder="Apellido materno"
+            maxlength="25"
+            required
+          />
+
+          <input
+            type="text"
+            name="nombres"
+            class="form-control"
+            placeholder="Nombre o nombres"
+            maxlength="25"
+            required
+          />
+          <input
+            class="form-control"
+            name="fecha-nacimiento"
+            type="date"
+            placeholder="Fecha"
+            required
+          />
+
+          <input
+            name="numero"
+            type="tel"
+            class="form-control"
+            placeholder="Numero de telefono"
+            minlength="10"
+            maxlength="10"
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+            maxlength="50"
+            required
+          />
+
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+            minlength="8"
+            maxlength="16"
+            required
+          />
+
+          {{#if error}}
+
+            <p style="color: red;">{{error}}</p>
+
+          {{/if}}
+
+          <button class="btn btn-dark btn-block">Signup</button>
+
+        </form>
+
+      </div>
+
     </div>
- <script src="../js/script.js"></script>
-</main>
+
+  </div>
+
+</div>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"
+></script>

@@ -13,19 +13,15 @@ function index(req, res) {
 }
 
 function acerca(req, res) {
-  if (req.session.loggedin == true) {
-    res.render('login/acerca', {name: req.session.name});
-} else {
-    res.redirect('login/acerca')
-}}
-
+    res.render('ac/acerca',  {name: req.session.name})
+}
 function storeUser(req, res) {
   const data = req.body;
 
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM users WHERE email = ?', [data.email], (err, userdata) => {
       if (userdata.length > 0) {
-        res.render('login/index', { error: 'ya existe carnal' })
+        res.render('login/index', { error: 'ya existe el email' })
       } else {
         bcrypt.hash(data.password, 12).then(hash => {
           data.password = hash;
@@ -54,7 +50,7 @@ function auth(req, res) {
         userdata.forEach(element => {
           bcrypt.compare(data.password, element.password, (err, isMatch) => {
             if (!isMatch) {
-              res.render('login/index', { errors: 'Contraseña incorrecta carnal' })
+              res.render('login/index', { errors: 'Contraseña incorrecta' })
             } else {
               req.session.loggedin = true;
               req.session.name = element.nombres
@@ -66,7 +62,7 @@ function auth(req, res) {
         })
 
       } else {
-        res.render('login/index', { errors: 'no existe carnal' })
+        res.render('login/index', { errors: 'no existe el email' })
       }
     })
   })

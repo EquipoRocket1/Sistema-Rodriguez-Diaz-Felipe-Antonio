@@ -1,33 +1,68 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>El tio</title>
 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
 
+  <body>
+    <style>
+        body{
+            background-image: url('https://inaturalist-open-data.s3.amazonaws.com/photos/65060962/original.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
 
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+    <div class="container" style="background-color: white;">
+      <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
+        >
+         <img class="bi me-2"
+            width="40"
+            height="32" src="https://inaturalist-open-data.s3.amazonaws.com/photos/65061739/original.jpg" alt="Foca">
+        </a>
 
-<body>
-
-    <nav>
-        <ul>
-          <li class="active"><a href="/">El tio</a></li>
-          <li class="acerca"><a href="/acerca">Acerca de</a></li>
-          {{#if name}}
-          <p class="nombre"><a href="">{{name}}</a></p>
-          <li class="sesionl"><a href="/logout">Cerrar sesion</a></li>
-          {{else}}
-          <li class="sesion"><a href="/login">Iniciar sesion</a></li>
-          {{/if}}
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+          <li><a href="/acerca" class="nav-link px-2 link-dark">About</a></li>
         </ul>
-    </nav>
+
+        {{#if name}}
+         <div class="flex-shrink-0 dropdown">
+          <a href="/logout" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <p>logout</p>
+          </a>
+        {{else}}
+        <div class="col-md-3 text-end">
+          <a href="/login"><button
+            type="button"
+            class="btn btn-outline-primary me-2"
+          >Acceder</button></a>
+        </div>
+        
+        {{/if}}
+      </header>
+    </div>
 
     {{{body}}}
 
-</body>
+  </body>
 
 </html>
