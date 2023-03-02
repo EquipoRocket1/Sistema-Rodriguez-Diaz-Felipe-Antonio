@@ -30,7 +30,7 @@ function storeUser(req, res) {
             conn.query('INSERT INTO `users` SET ?', [data], (err, rows) => {
 
               req.session.loggedin = true;
-              req.session.name = data.nombres
+              req.session.name = data.nombre
 
               res.redirect('/');
             })
@@ -53,7 +53,7 @@ function auth(req, res) {
               res.render('login/index', { errors: 'Contraseña incorrecta' })
             } else {
               req.session.loggedin = true;
-              req.session.name = element.nombres
+              req.session.name = element.nombre
 
               res.redirect('/')
             }
