@@ -91,21 +91,16 @@
 
           <input
             type="text"
-            name="apellido-paterno"
-            class="form-control"
-            placeholder="Apellido paterno"
-=======
             name="apPaterno"
             class="form-control"
-            placeholder="apellido-paterno"
->>>>>>> Stashed changes
+            placeholder="Apellido paterno"
             maxlength="25"
             required
           />
 
           <input
             type="text"
-            name="apellido-materno"
+            name="apMaterno"
             class="form-control"
             placeholder="Apellido materno"
             maxlength="25"
@@ -114,7 +109,7 @@
 
           <input
             type="text"
-            name="nombres"
+            name="nombre"
             class="form-control"
             placeholder="Nombre o nombres"
             maxlength="25"
@@ -122,17 +117,19 @@
           />
           <input
             class="form-control"
-            name="fecha-nacimiento"
+            name="fechaNacimiento"
             type="date"
             placeholder="Fecha"
             required
           />
 
           <input
-            name="numero"
+            name="telefono"
             type="tel"
             class="form-control"
             placeholder="Numero de telefono"
+            title="Pon un numero de telefono con 10 digitos"
+            pattern="[0-9]{10}"
             minlength="10"
             maxlength="10"
             required
@@ -159,15 +156,6 @@
 
           <input type="hidden" name="rol", value="e">
 
-<<<<<<< Updated upstream
-=======
-          <input
-            name="rol",
-            value="e",
-            type="hidden"
-          />
-
->>>>>>> Stashed changes
           {{#if error}}
 
             <p style="color: red;">{{error}}</p>

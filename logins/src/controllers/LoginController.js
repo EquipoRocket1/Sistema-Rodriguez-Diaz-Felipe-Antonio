@@ -27,7 +27,6 @@ function storeUser(req, res) {
           data.password = hash;
 
           req.getConnection((err, conn) => {
-            console.log(data)
             conn.query('INSERT INTO `users` SET ?', [data], (err, rows) => {
 
               req.session.loggedin = true;
